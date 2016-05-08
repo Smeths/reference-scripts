@@ -1,0 +1,26 @@
+show contents of file01 and file02
+1) options -F and -v and how fields work
+awk -F, '{ print $1 }' file01 !explain -F option and $1 variable
+repeat above print two variables
+awk -v age="your age:" -F, '{print age, $4}' file01
+2) pattern
+a) regular expression
+awk -F, '/Bob/ { print $1 }' file01
+awk -F, '/^1/ { print $1; print $2; print $3}' file01
+awk -F, '/^(1|2)/ { print $1; print $2; print $3}' file01
+b) relational expressions
+awk -F, '/$1 < $4/ { print $1; print $2; print $3}' file01
+awk -F, '/$4 < $1/ { print $1; print $2; print $3}' file01
+c) pattern matching
+awk -F, '$1~1 { print $1; print $2; print $3}' file01
+awk -F, '$1!~1 { print $1; print $2; print $3}' file01
+d) BEGIN END
+awk -F, 'BEGIN {print "starting"} $1!~1{ print $1} END {"ending"}' file01
+f) and matching
+awk -F, '$4~13 && $1~2 {print $0}' file01
+3) actions
+a) x++ example
+awk -F, '$1!~1 {x++} END {print x} ' file01
+4) script
+a) simple script
+b) script with for and if statement examples 

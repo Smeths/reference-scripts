@@ -1,0 +1,5 @@
+files and text
+
+1) wc - examining files
+2) head/tail - selecting lines
+3) cut - selecting fields
